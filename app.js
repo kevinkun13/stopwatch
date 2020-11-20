@@ -8,15 +8,15 @@ const resetBtn = document.getElementById('reset-btn');
 let second = 0;
 let minute = 0;
 let hour = 0;
-let timerInterval;
+let timeInterval;
 
-// Set Timer
-function setTimerInterval() {
+// Set Time
+function setTimeInterval() {
     second += 1;
-    if (second > 60) {
+    if (second >= 60) {
         second = 0;
         minute += 1;
-        if (minute > 60) {
+        if (minute >= 60) {
             minute = 0;
             hour += 1;
         }
@@ -29,20 +29,20 @@ function setTimerInterval() {
 
 // Event Listener
 startBtn.addEventListener('click', () => {
-    timerInterval = setInterval(setTimerInterval, 1000);
+    timeInterval = setInterval(setTimeInterval, 1000);
     startBtn.style.display = 'none';
     stopBtn.style.display = 'inline-block';
 });
 
 stopBtn.addEventListener('click', () => {
-    clearInterval(timerInterval);
+    clearInterval(timeInterval);
     startBtn.innerText = 'Continue';
     startBtn.style.display = 'inline-block';
     stopBtn.style.display = 'none';
 });
 
 resetBtn.addEventListener('click', () => {
-    clearInterval(timerInterval);
+    clearInterval(timeInterval);
     second = 0;
     minute = 0;
     hour = 0;
